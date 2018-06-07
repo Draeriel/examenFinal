@@ -16,6 +16,9 @@ import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoInternacional;
 import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoMultiple;
 import org.mvpigs.commandpattern.tratamientos.TratamientoPedidoPeligroso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * NO PUEDES MODIFICAR EL CODIGO DE LOS CASOS TEST 
  */
@@ -201,7 +204,10 @@ public class TestPedidos {
          * Pasasela a TratamientoPedidosMultiple en su constructor.
          */
 
-        // Coleccion pedidos
+        Map<String, Integer> pedidos = new HashMap<String, Integer>();
+        pedidos.put("Gondor", 10);
+        pedidos.put("Minas Tirith", 10);
+        pedidos.put("Rohan", 10);
         assertTrue(pedidos.size() == 3);
 
         TratamientoPedidoMultiple pedidosMult = new TratamientoPedidoMultiple(pedidos);
