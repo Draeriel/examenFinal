@@ -6,8 +6,9 @@ import org.mvpigs.commandpattern.pedidos.PedidoInternacional;
 public class TratamientoPedidoInternacional implements TratamientoPedido{
     boolean isValid = true;
 
-    public TratamientoPedidoInternacional(PedidoInternacional destino) {
-        if (destino.equals("Mordor")) {
+    public TratamientoPedidoInternacional(PedidoInternacional pedido) {
+
+        if (pedido.destino().equals("Mordor")) {
             isValid = false;
         }
     }

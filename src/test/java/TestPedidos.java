@@ -101,11 +101,11 @@ public class TestPedidos {
     public void test_UUID_generator() {
 
         PedidoInternacional internacional = new PedidoInternacional("Mordor", 10);
-        PedidoPeligrosoOrden peligroso = new PedidoPeligrosoOrden("Cima de los vientos", 
+        PedidoPeligrosoOrden peligroso = new PedidoPeligrosoOrden("Cima de los vientos",
                                                                   "no limpiarse las uñas con este puñal");
         assertNotNull(internacional.getId());
         assertNotNull(peligroso.getId());
-       
+
         assertTrue(internacional.getId() != peligroso.getId());
     }
 
@@ -122,10 +122,10 @@ public class TestPedidos {
         assertNotNull(nacional);
         assertTrue(internacional.getId() != nacional.getId());
     }
-    
+
     /**
      * Construye una oficina que procese todo tipo de pedidos.
-     * 
+     *
      * La oficina procesa los pedidos en funcion de si
      * es posible tratarlos o no segun las reglas de cada
      * tipo de pedido
@@ -133,7 +133,7 @@ public class TestPedidos {
 
     @Test
     public void test_interface_procesador() {
-        
+
         Procesador correos = new Oficina();
         TratamientoPedido pedidoInt = new TratamientoPedidoInternacional(
                                             new PedidoInternacional("Comarca", 100));
@@ -141,7 +141,7 @@ public class TestPedidos {
 
         TratamientoPedido pedidoConPeligro = new TratamientoPedidoPeligroso(
                                                  new PedidoPeligrosoOrden(
-                                                        "Cima de los vientos", 
+                                                        "Cima de los vientos",
                                                         "no limpiarse las uñas con este puñal"));
         assertTrue(correos.procesa(pedidoConPeligro));
     }
@@ -149,7 +149,7 @@ public class TestPedidos {
     /**
      * La oficina puede enviar un mensaje que informe del
      * status del pedido, en funcion de si ha sido posible procesarlo.
-     * 
+     *
      * Hace uso de un tipo enumerado STATUS con las constantes
      * ACEPTADO y RECHAZADO.
      */
@@ -165,13 +165,13 @@ public class TestPedidos {
         assertEquals("Comarca ACEPTADO", correos.printarStatus(
                                             correos.procesa(pedidoInt), toComarcaWithLove));
 
-        PedidoPeligroso pedidoConPeligro = new PedidoPeligrosoOrden("Monte del destino", 
+        PedidoPeligroso pedidoConPeligro = new PedidoPeligrosoOrden("Monte del destino",
                                                                     "no ponerselo en el dedo");
         TratamientoPedido tratamientoKO = new TratamientoPedidoPeligroso(pedidoConPeligro);
 
         assertFalse(correos.procesa(tratamientoKO));
         assertEquals("Monte del destino RECHAZADO", correos.printarStatus(
-                                                        correos.procesa(tratamientoKO), 
+                                                        correos.procesa(tratamientoKO),
                                                                         pedidoConPeligro));
 
     }
@@ -179,13 +179,13 @@ public class TestPedidos {
     /**
      * Crea una clase TratamientoPedidoMultiple que permita tratar
      * pedidos multiples.
-     * 
-     * La clase permite tratar el pedido multiple si 
+     *
+     * La clase permite tratar el pedido multiple si
      * el peso total de los pedidos es mayor que 0
-     * y 
+     * y
      * el numero de bultos coincide con el numero de
      * pedidos individuales que forman el pedido multiple.
-     * 
+     *
      * Crea las clases necesarias que se requieren en los casos test
      * respetando los constructores que se exigen.
      */
@@ -194,10 +194,10 @@ public class TestPedidos {
     public void test_tratamiento_pedido_multiple_tratar() {
 
         /**
-         * Crea una colección de tres pedidos nacionales, 
+         * Crea una colección de tres pedidos nacionales,
          * a "Gondor", "Minas Tirith", "Rohan"
          * con un peso de 10 cada uno.
-         * 
+         *
          * Pasasela a TratamientoPedidosMultiple en su constructor.
          */
 
@@ -210,15 +210,15 @@ public class TestPedidos {
         /**
          * Completa los metodos del pedido multiple.
          * Se valorara el uso de streams.
-         * 
+         *
          * calcularTotalBultos
          * @param   void
          * @return  void
-         *   
+         *
          * calcularPesoTotal
          * @param   void
          * @return  void
-         * 
+         *
          */
 
         pedidosMult.calcularTotalBultos();
